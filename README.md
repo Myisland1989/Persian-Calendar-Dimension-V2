@@ -108,7 +108,7 @@ The program automatically merges the adjustment file with the downloaded calenda
 Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Persian-Calendar-Dimension.git
+[https://github.com/Myisland1989/Persian-Calendar-Dimension-V2.git]
 ```
 
 Install packages
