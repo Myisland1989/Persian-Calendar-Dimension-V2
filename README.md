@@ -167,6 +167,20 @@ Contributions, ideas and pull requests are welcome.
 
 # License
 
+# Screenshots
+
+## Calendar
+
+![Calendar](screenshots/calendar.png)
+
+## Holiday Adjustment
+
+![Adjustment](screenshots/adjustment.png)
+
+## Power BI Example
+
+![Power BI](screenshots/powerbi.png)
+
 MIT License
 
 ---
