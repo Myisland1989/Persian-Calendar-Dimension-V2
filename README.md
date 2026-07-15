@@ -1,2 +1,2 @@
 # Persian-Calendar-Dimension-V2
-Persian Calendar With Holidays
+Generate a Persian (Jalali) calendar dimension table with holidays for Excel, Power BI, SQL Server and data warehouses.
