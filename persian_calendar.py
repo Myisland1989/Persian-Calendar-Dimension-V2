@@ -8,9 +8,9 @@ from datetime import datetime
 # =========================
 
 start_year = 1398
-end_year = 1406
+end_year = 1400
 
-output_file = "Persian_Calendar_1398_1406.xlsx"
+output_file = "Persian_Calendar_1398_1400.xlsx"
 
 
 
@@ -61,6 +61,17 @@ weekday_offset = {
 
 
 
+
+
+def get_season_number(month):
+    if month <= 3:
+        return 1
+    elif month <= 6:
+        return 2
+    elif month <= 9:
+        return 3
+    return 4
+
 def get_season(month):
 
     if month <= 3:
@@ -91,6 +102,7 @@ date_index = 1
 # Global indexes
 global_week_index = 1
 global_month_index = 1
+global_season_index = 1
 
 
 
@@ -134,6 +146,7 @@ for year in range(start_year, end_year + 1):
 
         # month index increases globally
         current_month_index = global_month_index
+        current_season_index = global_season_index
 
 
         for day in months[month]:
@@ -217,7 +230,10 @@ for year in range(start_year, end_year + 1):
                 holiday_rows.append({
 
                     "Jalali_Date":
-                        jalali_date,
+                    jalali_date,
+
+                "Jalali_Date_Int":
+                    int(f"{solar['year']}{solar['month']:02d}{solar['day']:02d}"),
 
                     "Gregorian_Date":
                         gregorian_date,
@@ -246,6 +262,9 @@ for year in range(start_year, end_year + 1):
                 "Jalali_Date":
                     jalali_date,
 
+"Jalali_Date_Int":
+    int(f"{solar['year']}{solar['month']:02d}{solar['day']:02d}"),
+
 
                 "Gregorian_Date":
                     gregorian_date,
@@ -255,36 +274,37 @@ for year in range(start_year, end_year + 1):
                     solar["year"],
 
 
-                "Year_Month":
-                    f"{solar['year']}-{solar['month']:02d}",
-
-
-
                 "Season":
-                    get_season(
-                        solar["month"]
-                    ),
+                    get_season(solar["month"]),
 
+                "Season_Number":
+                    get_season_number(solar["month"]),
 
+                "Season_Index":
+                    current_season_index,
 
-                "Month_Index":
-                    current_month_index,
-
-
-
-                "Month_Of_Year":
-                    solar["month"],
-
-
-
-                "Month_Name":
+"Month_Name":
                     month_names[
                         solar["month"]
                     ],
 
 
+"Year_Month":
+                    f"{solar['year']}-{solar['month']:02d}",
 
-                "Day":
+                "Month_Of_Year":
+                    solar["month"],
+                    
+                    "Month_Index":
+                    current_month_index,
+
+
+                "DayOfWeek":
+                    day_names[
+                        solar["dayWeek"]
+                    ],
+                    
+                    "DayOfMonth":
                     solar["day"],
 
 
@@ -293,22 +313,12 @@ for year in range(start_year, end_year + 1):
                     day_of_year,
 
 
-
-                "DayOfWeek":
-                    day_names[
-                        solar["dayWeek"]
-                    ],
-
-
+"Week_Of_Year":
+                    week_of_year,
+                
 
                 "Week_Index":
                     global_week_index,
-
-
-
-                "Week_Of_Year":
-                    week_of_year,
-
 
 
                 "Holiday_API":
@@ -341,6 +351,8 @@ for year in range(start_year, end_year + 1):
 
         # after each month
         global_month_index += 1
+        if int(month) in (3,6,9,12):
+            global_season_index += 1
 
 
 
