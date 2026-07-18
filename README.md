@@ -172,6 +172,7 @@ Contributions, ideas and pull requests are welcome.
 ## Calendar
 
 ![Calendar](screenshots/calendar.png)
+<img width="1920" height="1017" alt="PowerPivot" src="https://github.com/user-attachments/assets/0d0234e2-6073-4bfd-8a3b-41af46d3d0a7" />
 
 ## Holiday Adjustment
 
